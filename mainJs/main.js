@@ -47,23 +47,57 @@ form.addEventListener('submit', async (e) => {
   messageDiv.innerHTML = '<p class="text-info">Sending message...</p>';
 
   try {
-    // Use no-cors mode to bypass CORS restriction
-    // Message will be sent to Telegram even though we can't read response
-    await fetch('https://telegram-proxy.ponphirum.workers.dev', {
-      method: 'POST',
-      body: new FormData(form),
-      mode: 'no-cors'
-    });
+    // Get form data
+    const formData = new FormData(form);
 
-    // With no-cors, request is sent but response is opaque
-    // Since Telegram receives the message, show success
-    messageDiv.innerHTML =
-      '<p class="text-success">Message sent successfully!</p>';
-    form.reset();
+    // Check if we're on localhost (development) or production
+    const isLocalhost =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
 
-    setTimeout(() => {
-      messageDiv.innerHTML = '';
-    }, 4000);
+    let success = false;
+
+    if (isLocalhost) {
+      // Try local backend first
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            subject: formData.get('subject'),
+            message: formData.get('message')
+          })
+        });
+        const result = await response.json();
+        success = result.success || response.ok;
+      } catch (e) {
+        console.log('Local backend not available, using Cloudflare Worker');
+      }
+    }
+
+    // Use Cloudflare Worker (for production or fallback)
+    if (!success) {
+      // Send as FormData to Cloudflare Worker
+      await fetch('https://telegram-proxy.ponphirum.workers.dev', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // Worker handles CORS
+      });
+      // With no-cors we can't read response, assume success
+      success = true;
+    }
+
+    if (success) {
+      messageDiv.innerHTML =
+        '<p class="text-success">✅ Message sent successfully!</p>';
+      form.reset();
+
+      setTimeout(() => {
+        messageDiv.innerHTML = '';
+      }, 4000);
+    }
   } catch (error) {
     messageDiv.innerHTML =
       '<p class="text-danger">Something went wrong. Please try again.</p>';

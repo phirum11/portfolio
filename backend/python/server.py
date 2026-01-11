@@ -3,7 +3,7 @@ Portfolio Contact Form Backend Server
 Captures IP, Device, Country, and ISP information
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory, send_file
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
@@ -15,7 +15,10 @@ import json
 from datetime import datetime
 from functools import lru_cache
 
-app = Flask(__name__)
+# Get the portfolio root directory (two levels up from this file)
+PORTFOLIO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+app = Flask(__name__, static_folder=PORTFOLIO_ROOT, static_url_path='')
 CORS(app, origins=['*'])
 
 # Rate limiting
@@ -122,7 +125,7 @@ def get_client_ip():
 # Input Sanitization
 # ======================
 
-def sanitize_input(text: str, max_length: int = 1000) -> str:
+def sanitize_input(text: str, max_length: int = 1000, is_email: bool = False) -> str:
     """Sanitize input to prevent XSS and injection"""
     if not text:
         return ''
@@ -132,8 +135,11 @@ def sanitize_input(text: str, max_length: int = 1000) -> str:
     # Remove HTML tags
     text = re.sub(r'<[^>]*>', '', text)
     
-    # Remove dangerous characters
-    text = re.sub(r'[<>\"\'`;(){}]', '', text)
+    # Remove dangerous characters (but keep @ . - _ for emails)
+    if is_email:
+        text = re.sub(r'[<>\"\'`;(){}]', '', text)
+    else:
+        text = re.sub(r'[<>\"\'`;(){}]', '', text)
     
     # Remove javascript: and data: protocols
     text = re.sub(r'javascript:', '', text, flags=re.IGNORECASE)
@@ -238,11 +244,16 @@ def contact():
         else:
             data = request.form.to_dict()
         
+        # Debug log
+        print(f"📥 Received data: {data}")
+        
         # Sanitize inputs
-        name = sanitize_input(data.get('name', ''), 100)
-        email = sanitize_input(data.get('email', ''), 254)
-        subject = sanitize_input(data.get('subject', ''), 200)
-        message = sanitize_input(data.get('message', ''), 1000)
+        name = sanitize_input(data.get('name', ''), 100) if data else ''
+        email = sanitize_input(data.get('email', ''), 254, is_email=True) if data else ''
+        subject = sanitize_input(data.get('subject', ''), 200) if data else ''
+        message = sanitize_input(data.get('message', ''), 1000) if data else ''
+        
+        print(f"📝 Sanitized - name: '{name}', email: '{email}', message: '{message[:20]}...'")
         
         # Validation
         if not name or len(name) < 2:
@@ -336,16 +347,36 @@ def ip_info():
     })
 
 # ======================
+# Static File Serving
+# ======================
+
+@app.route('/')
+def serve_index():
+    """Serve the main index.html"""
+    return send_from_directory(PORTFOLIO_ROOT, 'index.html')
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    """Serve static files from portfolio root"""
+    # Check if file exists
+    file_path = os.path.join(PORTFOLIO_ROOT, filename)
+    if os.path.isfile(file_path):
+        return send_from_directory(PORTFOLIO_ROOT, filename)
+    # If not found, serve index.html (SPA support)
+    return send_from_directory(PORTFOLIO_ROOT, 'index.html')
+
+# ======================
 # Run Server
 # ======================
 
 if __name__ == '__main__':
-    print("""
+    print(f"""
     ╔════════════════════════════════════════════╗
     ║   Portfolio Backend (Python) Running       ║
     ╠════════════════════════════════════════════╣
     ║   Local:  http://localhost:5000            ║
     ║   API:    http://localhost:5000/api        ║
+    ║   Root:   {PORTFOLIO_ROOT}
     ╚════════════════════════════════════════════╝
     """)
     app.run(host='0.0.0.0', port=5000, debug=True)
