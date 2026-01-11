@@ -79,14 +79,24 @@ form.addEventListener('submit', async (e) => {
 
     // Use Cloudflare Worker (for production or fallback)
     if (!success) {
-      // Send as FormData to Cloudflare Worker
-      await fetch('https://telegram-proxy.ponphirum.workers.dev', {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors' // Worker handles CORS
-      });
-      // With no-cors we can't read response, assume success
-      success = true;
+      try {
+        const response = await fetch(
+          'https://telegram-proxy.ponphirum.workers.dev',
+          {
+            method: 'POST',
+            body: formData
+          }
+        );
+        const result = await response.json();
+        success = result.ok;
+
+        if (!success && result.error) {
+          throw new Error(result.error);
+        }
+      } catch (workerError) {
+        console.error('Worker error:', workerError);
+        throw workerError;
+      }
     }
 
     if (success) {
