@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHIRUM | Full Stack Developer & UI/UX Designer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.js"
+        integrity="sha512-tQQXRDB2wEmuJGtFrmmoFYzNTq8StA1XJrfO0OQbbTxd9G0CwaTDL6/C1y805IlvBVrMwOqob1kf6r/2U5XXVg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style/styles.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="logo">PHIRUM</span>
+            </a>
+            <div class="hamburger d-lg-none" id="menuBtn" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link " href="#home">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT ME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">MY EDUCATION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">PORTFOLIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hire-btn" href="#contact">HIRE ME</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="mobileMenu"
+        aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <button type="button" class="btn-close position-absolute end-0 top-0 me-3 mt-2" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-dark " href="#home">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-dark " href="#about">ABOUT ME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-dark " href="#services">SERVICE</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-dark " href="#portfolio">PORTFOLIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link  text-dark " href="#contact">CONTACT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link hire-btn" href="#contact">HIRE ME</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Hero Section -->
+    <section id="home" class="min-vh-100 d-flex align-items-center header">
+        <div class="container  py-5 py-lg-0">
+            <div class="row align-items-center justify-content-between g-5">
+                <!-- Left - Text content -->
+                <div class="col-lg-6 col-md-6 col-12 text-center text-lg-start">
+                    <h4 class=" mb-3 mb-lg-2">HELLO THERE, WELCOME TO MY SITE</h4>
+                    <h1 class="mb-2 mb-lg-3">
+                        I'm <span class="highlight">PHIRUM PON</span>
+                    </h1>
+                    <h2 class="hero-role mb-lg-4 ">
+                        I'm a <span id="typed-text"></span><span class="typed-cursor">|</span><br
+                            class="d-inline-block">
+                    </h2>
+                    <p class="hero-description lead mb-4 mb-lg-5 text-start">
+                        I am a junior front-end developer passionate about creating clean, functional, and user-friendly
+                        digital experiences. I enjoy turning ideas into responsive designs using modern web
+                        technologies.
+                    </p>
+                    <div
+                        class="d-flex gap-3 justify-content-center justify-content-lg-start  align-items-center portfolio-btn">
+                        <a href="#portfolio" class="btn btn-primary px-3 py-2">SEE PORTFOLIO</a>
+                        <a href="#contact" class="btn btn-outline-light  px-3 py-2">CONTACT ME</a>
+                    </div>
+                </div>
+                <!-- Right - Image -->
+                <div class="col-lg-6 col-md-6 col-12 text-center img-width ">
+                    <img src="cat.gif" alt="PHIRUM - Developer & Designer"
+                        class="img-fluid shadow-lg hero-img rounded-circle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">ABOUT <span class="highlight">ME</span></h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="about-heading">Crafting Digital Experiences</h3>
+                    <p>I'm a passionate front-end and backend developer with over 1 year of experience creating
+                        web applications and digital solutions. My approach combines technical expertise with creative
+                        design thinking.</p>
+                    <p>I specialize in creating responsive, accessible, and performant websites and applications that
+                        deliver exceptional user experiences.</p>
+                    <div class="skills mt-5 mb-md-5 ">
+                        <h4 class="mb-4 text-center text-lg-start">My Skills</h4>
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <!-- HTML/CSS -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div>
+                                            <img src="./asset/icon/html.png" alt="" width="30" height="30">
+                                            <span>HTML</span>
+                                        </div>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="HTML/CSS" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-success" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <!-- css -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div>
+                                            <img src="./asset/icon/732190.png" alt="" width="30" height="30">
+                                            <span>CSS</span>
+                                        </div>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="HTML/CSS" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- JavaScript -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+
+                                        <div>
+                                            <img src="./asset/icon/js.webp" alt="" width="30" height="30">
+                                            <span>JavaScript</span>
+                                        </div>
+                                        <span>50%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="JavaScript" aria-valuenow="90"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-info" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                <!-- Node.js -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div>
+                                            <img src="./asset/icon/reactJs.webp" alt="" width="30" height="30">
+                                            <span>React.Js</span>
+                                        </div>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="Node.js" aria-valuenow="80"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-dark" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <!-- UI/UX Design -->
+
+                                <!-- Bootstrap -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div>
+                                            <img src="./asset/icon/Bootstrap_logo.svg.png" alt="" width="30"
+                                                height="30">
+                                            <span>Bootstrap</span>
+                                        </div>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="Bootstrap" aria-valuenow="95"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-secondary" style="width: 65%"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Python -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <div>
+                                            <img src="./asset/icon/python_104451.webp" alt="" width="30" height="30">
+                                            <span>Python</span>
+                                        </div>
+                                        <span>20%</span>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="Python" aria-valuenow="70"
+                                        aria-valuemin="0" aria-valuemax="100">
+                                        <div class="progress-bar bg-warning" style="width: 20%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 ">
+                    <div class="about-info">
+                        <div class="info-item">
+                            <h5><i class="fas fa-user"></i> Name</h5>
+                            <p>PHIRUM PON</p>
+                        </div>
+                        <div class="info-item">
+                            <h5><i class="fas fa-envelope"></i> Email</h5>
+                            <p>ponphirum@gmail.com</p>
+                        </div>
+                        <div class="info-item">
+                            <h5><i class="fas fa-map-marker-alt"></i> Location</h5>
+                            <p>Phnom Penh, Cambodia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="services-section py-5">
+        <div class="container">
+            <div class="title">
+                <h2 class="section-title text-center mb-5">MY <span class="highlight">EDUCATION</span></h2>
+            </div>
+            <div class="center-line">
+                <div class="d-flex flex-column">
+                     <div class="mx-3">
+                     <p class="fs-5 ">2013-2018 was studying at AngSirie primary school</p>
+                </div>
+                  <div class="mx-3">
+                    <p class="fs-5 ">2013-2018 was studying at AngSirie primary school</p>
+                </div>
+                </div>
+                <!-- education since 2014 -->
+                <div class="mx-5">
+                    <p id="vertical-line"></p>
+                </div>
+                <div class="mx-2">
+                    <!-- education since 2014 -->
+                    <p class="fs-5 mt-5">2013-2018 was studying at AngSirie primary school</p>
+
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">MY <span class="highlight">PORTFOLIO</span></h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid" alt="E-commerce Website">
+                        <div class="portfolio-overlay">
+                            <h4>E-commerce Platform</h4>
+                            <p>Full-featured online store with payment integration</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid" alt="Mobile App Design">
+                        <div class="portfolio-overlay">
+                            <h4>Fitness App UI</h4>
+                            <p>Mobile application design for fitness tracking</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                            class="img-fluid" alt="Dashboard Design">
+                        <div class="portfolio-overlay">
+                            <h4>Analytics Dashboard</h4>
+                            <p>Data visualization and business intelligence dashboard</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">CONTACT <span class="highlight">ME</span></h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="contact-form" id="contactForm">
+                        <form id="myForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                        required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea name="message" class="form-control" rows="5" placeholder="Your Message"
+                                    required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                            <div id="formMessage" class="mt-3 text-center fw-bold"></div>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="contact-info text-center mt-5">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <i class="fas fa-envelope contact-icon"></i>
+                                <h5>Email</h5>
+                                <p>ponphirum@gmail.com</p>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <i class="fas fa-phone contact-icon"></i>
+                                <h5>Phone</h5>
+                                <p>+855 96 7945 153</p>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <i class="fas fa-map-marker-alt contact-icon"></i>
+                                <h5>Location</h5>
+                                <p>Phnom Penh, Cambodia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2026 PHIRUM. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Smooth Scroll JS -->
+    <script src="./mainJs/main.js">
+        // Smooth scrolling for anchor links
+    </script>
+</body>
+
+</html>

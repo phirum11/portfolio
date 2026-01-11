@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 300px;
+        height: 300px;
+        border: 2px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .inside-box {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: width 0.5s, height 0.5s;
+    }
+    .inside-box.open {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+<body>
+    <div class="box">
+        <div class="inside-box" id="inside">
+            <button id="clickMe">click me</button>
+        </div>
+    </div> 
+    <script>
+        const button = document.getElementById('clickMe');
+        const insideBox = document.getElementById('inside');
+        button.addEventListener('click', () => {
+            insideBox.classList.toggle('open');
+            // remove or add the class 'open' to the insideBox element
+        });
+        // what is classList.toggle?
+        // classList.toggle is a method that adds a specified class to an element if it is not already present, or removes it if it is. This allows for easy toggling of styles or behaviors associated with that class.
+    </script>
+</body>
+</html>
